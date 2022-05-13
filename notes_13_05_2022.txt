@@ -635,3 +635,1062 @@ this() cannot be used inside a method.
    void display(){
      this();
    }
+------------------------------------------------------------------------------------------------------------------------------
+
+Encapsulation means keeping the member variables and methods within an enclosure which is a class and after that deciding which member needs to be kept with
+restricted access and which needs to be exposed outside the class. So the members which we need to keep restricted are declared with private access
+specifier/modifier and the members which are to be exposed we declare them as public. The below is not a complete example of encapsulation.
+
+
+class Customer {
+	public String customerId;
+	public String customerName;
+	public long contactNumber;
+	public String address;
+    
+    public void displayCustomerDetails() {
+		System.out.println("Displaying customer details \n***********");
+		System.out.println("Customer Id : " + customerId);
+		System.out.println("Customer Name : " + customerName);
+		System.out.println("Contact Number : " + contactNumber);
+		System.out.println("Address : " + address);
+		System.out.println();
+	}
+}
+public class Tester {
+	public static void main(String args[]) {
+		Customer customer = new Customer();
+		customer.customerId = "C101";
+		customer.customerName = "Stephen Abram";
+		customer.contactNumber = 7856341287L;
+		customer.address = "D089, St. Louis Street, Springfield, 62729";
+		customer.displayCustomerDetails();
+	}
+}
+
+---------------------------------------------------------------------------------------
+
+class Customer {
+	private String customerId;
+	private String customerName;
+	private long contactNumber;
+	private String address;
+    
+    public void setData(){
+     customerId="C101";
+     customerName = "Stephen Abram";
+     contactNumber = 7856341287L; 
+     address = "D089, St. Louis Street, Springfield, 62729";
+   }
+
+    public void displayCustomerDetails() {
+		System.out.println("Displaying customer details \n***********");
+		System.out.println("Customer Id : " + customerId);
+		System.out.println("Customer Name : " + customerName);
+		System.out.println("Contact Number : " + contactNumber);
+		//System.out.println("Address : " + address);
+		System.out.println();
+	}
+}
+public class Tester {
+	public static void main(String args[]) {
+		Customer customer1 = new Customer();
+	        Customer customer2 = new Customer();
+   	        customer1.setData();
+                customer2.setData();
+		customer1.displayCustomerDetails();
+                customer2.displayCustomerDetails();
+	}
+}
+
+The above code gives same data for multiple objects. We can implement Scanner and take user inout.
+
+import java.util.Scanner;
+class Customer {
+	private String customerId;
+	private String customerName;
+	private long contactNumber;
+	private String address;
+    
+    public void setData(){
+     Scanner scan=new Scanner(System.in);
+     System.out.println("Enter the value of customer id");
+     customerId=scan.next():
+     
+   }
+
+    public void displayCustomerDetails() {
+		System.out.println("Displaying customer details \n***********");
+		System.out.println("Customer Id : " + customerId);
+		System.out.println("Customer Name : " + customerName);
+		System.out.println("Contact Number : " + contactNumber);
+		System.out.println("Address : " + address);
+		System.out.println();
+	}
+}
+public class Tester {
+	public static void main(String args[]) {
+		Customer customer1 = new Customer();
+	        Customer customer2 = new Customer();
+   	        customer1.setData();
+                customer2.setData();
+		customer1.displayCustomerDetails();
+                customer2.displayCustomerDetails();
+	}
+}
+
+// So if we scan the value so for multiple objects we can have different values. 
+---------------------------------------------------------------------------------------------------------------------
+
+
+class Customer {
+	private String customerId;
+	private String customerName;
+	private long contactNumber;
+	private String address;
+    
+    public void setData(String customerId, String customerName, long contactNumber, String address){
+       this.customerId=customerId;
+       this.customerName=customerName;
+       this.contactNumber=contactNumber;
+       this.address=address;
+     
+   }
+
+    public void displayCustomerDetails() {
+		System.out.println("Displaying customer details \n***********");
+		System.out.println("Customer Id : " + customerId);
+		System.out.println("Customer Name : " + customerName);
+		System.out.println("Contact Number : " + contactNumber);
+		System.out.println("Address : " + address);
+		System.out.println();
+	}
+}
+public class Tester {
+	public static void main(String args[]) {
+		Customer customer1 = new Customer();
+	        Customer customer2 = new Customer();
+   	        customer1.setData("C101","Lalit",1234567890,"Delhi");
+                customer2.setData("C102","Akash",9830234232,"Chennai");
+		customer1.displayCustomerDetails();
+                customer2.displayCustomerDetails();
+	}
+}
+
+// So with the help of parameterised setData method we can provide different set of values for different objects.
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+setter and getter methods. So for each of the attribute we have a pair of methods. set method to store the data or initialise the member variable and
+getData is used to access or read the data from the instance variable. We have a fixed way of writing the setter and getter method.
+
+So for set method the convention is:
+* Setter method starts with set.
+* followed by the attribute name making the first character in uppercase.
+
+For example if the attribute name is id ... We make the method as.
+int id;
+setId(){}
+String employeeName;
+setEmployeeName(){}
+
+* the set method dont have any return type.
+
+int id;
+void setId() {}
+String employeeName;
+void setEmployeeName() {}
+
+* The set method will be having parameter of the type same as that of the attribute for which we are writing the set method.
+
+int id;
+void setId(int id) {}
+String employeeName;
+void setEmployeeName(String employeeName){}
+double basic;
+void setBasic(double basic){}
+boolean graduate;
+void setGradulate(boolean graduate){}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+So for the get method the convention is:
+* Getter method starts with get.
+* followed by the attribute name making the first character in uppercase.
+
+For example if the attribute name is id ... We make the method as.
+int id;
+getId(){}
+String employeeName;
+getEmployeeName(){}
+
+* the get method have return type same as the attribute for which we are writing the get method.
+
+int id;
+int getId() {}
+String employeeName;
+String getEmployeeName() {}
+
+* The get method won;t be having any parameter.
+
+int id;
+int getId() {}
+String employeeName;
+String getEmployeeName(){}
+double basic;
+double getBasic(){}
+boolean graduate;
+boolean isGradulate(){}
+
+[Note: for boolean data read we dont have get method , it starts with is followed by the attribute name ]
+
+class Customer {
+   private int id;
+   private String name;
+   
+   public void setId(int id) {
+    this.id=id;
+   }
+
+   public int getId() {
+   return id;
+   }
+
+   public void setName(String name){
+    this.name=name;
+   }
+
+  public String getName(){
+   return name;
+  }
+}
+
+
+public class CustomerMain{
+    public static void main(String args[]){
+    Customer customer1=new Customer();
+    Customer customer2=new Customer();
+    customer1.setId(1);
+    customer1.setName("Ranjith");
+    customer2.setId(2);
+   // customer2.setName("Suresh");
+    System.out.println(customer1.getId());
+    System.out.println(customer1.getName());
+    System.out.println(customer2.getId());
+   // System.out.println(customer2.getName());
+   }
+}   
+  
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+* To gernerate the setter and getter, right click on the code editor====> Source====> generate setters and getters.
+* Select the source menu item and from there , select generate setters and getters method.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Whenever we talk about Object Oriented concepts, We have 4 features associated with object oriented concepts.
+1) Encapsulation====> keeping the member variables and methods within a class. Using the access specifiers(private and public ) and planning for setter and getter 
+methods. setter method for writing or storing the details and getter method for reading/accessing the details.
+2) Abstraction
+3) Inheritance
+4) Polymorphism
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Class Item with id, name, price , qoh.....
+
+
+Item.java
+ItemMain.java
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+public class Item {
+private int id;
+private String name;
+private float price;
+private int qoh;
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public float getPrice() {
+	return price;
+}
+public void setPrice(float price) {
+	this.price = price;
+}
+public int getQoh() {
+	return qoh;
+}
+public void setQoh(int qoh) {
+	this.qoh = qoh;
+}
+
+}
+
+
+
+
+
+public class ItemMain {
+
+	public static void main(String[] args) {
+	Item item1=new Item();
+	item1.setId(1);
+	item1.setName("T-Shirt");
+	item1.setPrice(1000.50f);
+	item1.setQoh(200);
+	System.out.println(item1.getId());
+    System.out.println(item1.getName());
+
+	}
+
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Let us understand abstraction with an example
+
+
+Suppose we have initialise the members of a class.
+
+
+class Data1 {
+
+   private int num1;
+   private int num2;
+
+  public void setData(){
+    num1=10;
+    num2=20;
+  }
+
+ public void dispData(){
+   System.out.println(num1);
+   System.out.println(num2);
+  }
+}
+
+
+public class DataMain1 {
+   public static void main(String args[]) {
+    Data1 data=new Data1();
+    data.setData();
+    data.dispData();
+  }
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+import java.util.Scanner;
+class Data2 {
+
+   private int num1;
+   private int num2;
+
+  public void setData(){
+   Scanner scan=new Scanner(System.in);
+   num1=scan.nextInt();
+   num2=scan.nextInt();
+  }
+
+ public void dispData(){
+   System.out.println(num1+"\n"+num2);
+ }
+}
+
+  
+
+public class DataMain2 {
+   public static void main(String args[]) {
+    Data2 data=new Data2();
+    data.setData();
+    data.dispData();
+  }
+}
+
+------------------------------------------------------------------------------------------------------------------
+char alpha='a';
+char alpha2='b';
+char alpha3='c';
+char alpha4='1';
+char alpha5='$';
+
+
+  Manager ( Group of characters ) 
+  Ravi     ( Group of characters)
+
+So to work with group of characters we declare a reference variable of String type (String is a predefined class).
+
+// str is a reference variable of String type and
+// Welcome is an object of String type
+// So we are storing the reference of Welcome in str
+ public class StringDemo1 {
+    public static void main(String args[]) {
+     String str="Welcome";
+     System.out.println(str);
+    }
+ }
+
+// Welcome is a String literal. Literal means a constant. 
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+public class StringDemo2 {
+
+	public static void main(String[] args) {
+	    String str=new String("Welcome");
+	    System.out.println(str);
+	}
+
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. public class StringDemo3 {
+2.    public static void main(String args[]) {
+3.      String str1="Max";
+4.      String str2="Max";
+5.   }
+6. }
+
+
+In line 3 We created a reference variable str1 and the reference variable will point to the String object Max. The literal Max will be checked for
+its existence and as it is for the first time,  the literal Max will be created and stored in the constant String pool and will be refered by str1.
+In line 4, We are writing str2=Max, In line4 again it will be checked whether the constant String pool is already having Max or not. In our example
+it is already present because of line 3. So in line 4 , the constant Max won't get created. The str2 will refer to the same String Max which was
+created in line3.  
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+== is used to check whether the reference variables are pointing to the same object or not. In the below example both str1 and str2 are pointing to 
+the same literal Max. So when we use == with the reference variables, it will return us true. But when we use equals method of String class, it
+will check the content to which the reference variables are pointing to. So in the below example equals will also return true.
+
+public class StringDemo3 {
+    public static void main(String args[]) {     
+     String str1="Max";
+     String str2="Max";
+     System.out.println(str1==str2); // true
+     // == It checks whether str1 and str2 are pointing to the
+     // same object or not.
+     System.out.println(str1.equals(str2)); // equals method is
+     // used to compare the content of the objects
+     // which means is the content which is pointed by str1 is
+     // same as the content pointed by str2. If yes it returns true
+   }
+ }
+
+String is a class. It is a non primitive data type. It is a predefined class . String class we dont need to declare or create. We have to just create
+an object of String class in our program. String class is having many constructors and methods which we can use in our program or code. 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+char array[]=new char[20];
+
+* StringBuffer
+* StringBuilder
+
+String class object is immutable. Which means once the String object is created , it cannot be modified. If we modify a String object , it 
+will create a new Object all together.
+StringBuffer and StringBuilder , the object of these classes are mutable which means we can make changes in the Same string object.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+public class StringDemo4{
+    public static void main(String args[]) {     
+     String str1=new String("Max");
+     String str2=new String("Max");
+     System.out.println(str1==str2); // false
+     // == It checks whether str1 and str2 are pointing to the
+     // same object or not. In this case str1 and str2 are pointing to two different objects and the
+    // new objects got created with the new keyword
+     System.out.println(str1.equals(str2)); // equals method is
+     // used to compare the content of the objects
+     // which means is the content which is pointed by str1 is
+     // same as the content pointed by str2. If yes it returns true. In the current example both str1 and str2 are pointing to the
+     // objects which are having the same string content as Max. 
+   }
+ }
+
+------------------------------------------------------------
+[Note: We have to check how we are creating the String objects. 
+* Is it through String literal
+
+   String str1="hello";
+   String str2="hello";
+   == true
+   equals true
+
+
+* Through new keyword
+  String str1=new String("hello");
+  String str2=new String("hello");
+
+  == false
+  equals true
+---------------------------------------------------------------------------------------------------------------
+use equals to check whether two Strings are equal or not.
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+int length(); // It returns the length of a String
+public class StringDemo5 {
+
+	public static void main(String[] args) {
+		String str="welcome";
+ // int length(); // return type of length method is int without any parameter
+		int length=str.length();
+		System.out.println(length); // 7
+		System.out.println(str.length());//7
+
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------------
+String concat(String str2); // Adding one string to another String 
+
+public class StringDemo6{
+
+	public static void main(String[] args) {
+		String str="welcome";
+                String str2="friends";
+                String str3=str.concat(str2);
+                System.out.println(str3);   //welcomefriends
+                String str4=str2.concat(str);
+                System.out.println(str4);   // friendswelcome
+                String str5=str+str2;
+                System.out.println(str5);
+                String str6=str2+str;
+                System.out.println(str6);
+                String str7=str+" "+str2;
+                System.out.println(str7);
+                System.out.println(str+" "+str2);
+                System.out.println(str+str2);
+                
+
+
+	}
+
+}
+-----------------------------------------------------------------------------------------------------
+public class StringDemo6b{
+
+	public static void main(String[] args) {
+		String str="welcome";
+                String str2="friends";
+                String str3=str.concat(str2);
+                System.out.println(str3);   //welcomefriends
+                String str4=str2.concat(str);
+                System.out.println(str4);   // friendswelcome
+                String str5=str.concat(" ");   // welcome_
+                String str6=str5.concat(str2);   //welcome friends
+                System.out.println(str6);
+                String str7=str.concat(" ").concat(str2);  // method chaining  welcome friends
+                System.out.println(str7); 
+                System.out.println(str.concat(str2));
+
+
+	}
+
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+boolean equals(String str);
+
+
+Revise
+   
+Enter numbers from user and perform the addition of numbers till user enters any other thing than yes.
+
+Testcase
+Enter number
+1
+Do you want to continue?
+yes
+Enter number
+2
+Do you want to continue?
+yes
+Enter number
+3
+Do you want to continue?
+no
+The sum of 3 numbers : 6
+
+
+import java.util.Scanner;
+
+public class Revise1 {
+    public static void main(String args[]){
+    int num;
+    int count=0;
+    int sum=0;
+    String reply;
+    Scanner scan=new Scanner(System.in);
+    do {
+    System.out.println("Enter the number");
+    num=scan.nextInt();
+    System.out.println("Do you want to continue?");
+    reply=scan.next(); 	
+    count++;
+    sum+=num;
+    }while(reply.equals("yes"));
+    
+    System.out.println("The sum of "+count+" numbers: "+sum); 
+  }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+boolean equalsIgnoreCase(String str)
+
+Enter numbers from user and perform the addition of numbers till user enters any other thing than yes/Yes/YES/yeS/yEs.
+
+public class Revise2 {
+    public static void main(String args[]){
+    int num;
+    int count=0;
+    int sum=0;
+    String reply;
+    Scanner scan=new Scanner(System.in);
+    do {
+    System.out.println("Enter the number");
+    num=scan.nextInt();
+    System.out.println("Do you want to continue?");
+    reply=scan.next(); 	
+    count++;
+    sum+=num;
+    }while(reply.equalsIgnoreCase("yes"));
+    
+    System.out.println("The sum of "+count+" numbers: "+sum); 
+  }
+}
+
+------------------------------------------------------------
+
+String toLowerCase()
+String toUpperCase()
+
+public class StringDemo7 {
+   public static void main(String args[]) {
+       String lower="hello";
+       String upper="HELLO";
+       lower="heLLO";
+       System.out.println(lower.toUpperCase());
+       System.out.println(upper.toLowerCase());
+     }
+ }
+
+------------------------------------------------------------------------------------------------------------------
+
+char charAt(int pos);
+public class StringDemo8 {
+    public static void main(String args[]) {
+     String str="Welcome";
+     char ch=str.charAt(0);
+     System.out.println(ch); // W
+     ch=str.charAt(1);
+     System.out.println(ch); //e
+     ch=str.charAt(20);   // Exception in thread "main" java.lang.StringIndexOutOfBoundsException: 
+     //String index out of range: 20
+     System.out.println(ch);
+   }
+ }
+--------------------------------------------------------------------------------------------------------------------
+Write a code to enter a String from user and display it vertically
+ Enter a String
+ Welcome
+ Output
+ W
+ e
+ l
+ c
+ o
+ m
+ e
+Enter a String
+Hello
+Output
+H
+e
+l
+l
+o
+import java.util.Scanner;
+public class Exercise1{
+   public static void main(String args[]){
+    String str;
+    char ch=' ';
+    Scanner scan=new Scanner(System.in);
+    int length=0;
+    System.out.println("Enter a String");
+    str=scan.next();
+    length=str.length();
+    for(int pos=0;pos<length;pos++){
+    // System.out.println(str.charAt(pos));
+     ch=str.charAt(pos);
+     System.out.println(ch);
+   }
+  }
+}
+
+   }
+ }
+
+ [Hint: length() and charAt()]
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+// substring(int startIndex)===> startIndex till the end of the string
+// substring(int startIndex, int endIndex) ====> starting from startIndex and ending at end Index -1
+public class StringDemo8 {
+
+	public static void main(String[] args) {
+		String str="Welcome";
+        String substr=str.substring(3); // startIndex ( If we mention the startIndex only , it will
+        // give a substring from start index to end of the String
+        System.out.println(substr); // come
+        substr=str.substring(3,5); // startIndex is position 3 and endIndex is position 5 but while displaying , display 
+        // will be end index -1 which means here it will display till position 4
+        System.out.println(substr); //co 
+	}
+
+}
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+public class StringDemo9 {
+
+	public static void main(String[] args) {
+	String str="Welcome";
+	String str2="co";
+	String str3="do";
+	boolean b=str.contains(str2);
+	System.out.println(b);
+	b=str.contains(str3);
+	System.out.println(b);
+
+	}
+
+}
+--------------------------------------------------------------------------------------------------------------------
+Arrays : ---
+Suppose if I give you a task of storing 5 numbers and we dont have the knowledge of arrays.
+So how you are going to solve the problem.
+
+   import java.util.Scanner;
+   public class NotWithArrays{
+       public static void main(String args[]) {
+        int num1;
+        int num2;
+        int num3;
+        int num4;
+        int num5;
+        Scanner scan=new Scanner(System.in);
+        System.out.println("Enter num1");
+        num1=scan.nextInt();
+        System.out.println("Enter num2");
+        num2=scan.nextInt();
+        System.out.println("Enter num3");
+        num3=scan.nextInt();
+        System.out.println("Enter num4");
+        num4=scan.nextInt();
+        System.out.println("Enter num5");
+        num5=san.nextInt();
+        System.out.println("num1 "+num1);
+        System.out.println("num2 "+num2);
+        System.out.println("num3 "+num3);
+        System.out.println("num4 "+num4);
+        System.out.println("num5 "+num5);
+       }
+ }
+Observations with the above code:-
+* Reduntant steps.
+
+Arrays are basically adjacent memory locations given a common name and each location or element of this array is accessed with
+index number or subscript position
+
+    We should how to declare an array in Java
+
+   Suppose we want to declare an array of int data type.
+
+    int num[]=new int[5];
+    // The above line can be divided into two statements:
+    int num[]; // This signifies that we are declaring an array , [] signifies that it is an array declaration
+    num=new int[5]; // We are dynamically allocation an array of size 5. Dynamic means during the runtime.
+
+  public class ArrayDemo1 {
+    public static void main(String args[]){
+     int num[]=new int[5];
+     for(int i=0;i<num.length;i++){
+      System.out.println(num[i]);
+      }
+    }
+  }
+
+[ The above code will show the value as 0 , which is default value for int ]
+
+
+
+  public class ArrayDemo2 {
+    public static void main(String args[]){
+     boolean b[]=new boolean[5];
+     for(int i=0;i<b.length;i++){
+      System.out.println(b[i]);
+      }
+    }
+  }
+
+[ The above code will show false for the boolean array ]
+
+  public class ArrayDemo3 {
+    public static void main(String args[]){
+    String names[]=new String[5];
+     for(int i=0;i<names.length;i++){
+      System.out.println(names[i]);
+      }
+    }
+  }
+
+-------------------------------------------------------------------------------------------------------
+
+Q I dont want to see the default value for an integer array. So what can be done?
+A Either you initialise the array during the declaration or latter you go for element by element initialisation.
+
+  public class ArrayDemo4 {
+    public static void main(String args[]){
+     int num[]={1,10,20,45};
+     for(int i=0;i<num.length;i++){
+      System.out.println(num[i]);
+      }
+    }
+  }
+
+  public class ArrayDemo5 {
+    public static void main(String args[]){
+     String names[]={"Amit","Suresh","Ram"};
+     for(int i=0;i<names.length;i++){
+      System.out.println(names[i]);
+      }
+    }
+  }
+
+
+  public class ArrayDemo6 {
+    public static void main(String args[]){
+     int num[]={1,10,20,45};
+     for(int n : num) {
+      System.out.println(n);
+     }
+    }
+  }
+
+
+  public class ArrayDemo7 {
+    public static void main(String args[]){
+     String names[]={"Amit","Suresh","Ram"};
+      for(String name : names) {
+      System.out.println(name);
+      }
+    }
+  }
+ [Note : for each loop is used for read only and not for writing the data into the array]
+-------------------------------------------
+
+Enter 10 numbers from user and display those 10 numbers.
+
+
+  import java.util.Scanner;
+  public class ArrayDemo8 {
+    public static void main(String args[]){
+     int num[]=new int[10];
+     Scanner scan=new Scanner(System.in);     
+     for(int i=0;i<num.length;i++) {
+         System.out.println("Enter the number");
+         num[i]=scan.nextInt();
+      }
+     for(int n : num){
+              System.out.println(n);
+       }
+    
+    }
+  }
+-----------------------------------------------------------------------------------------
+Enter 10 numbers from user and add those 10 numbers.
+
+
+  import java.util.Scanner;
+  public class ArrayDemo9 {
+    public static void main(String args[]){
+     int num[]=new int[10];
+     int sum=0;
+     Scanner scan=new Scanner(System.in);     
+     for(int i=0;i<num.length;i++) {
+         System.out.println("Enter the number");
+         num[i]=scan.nextInt();
+         sum+=num[i]; // sum=sum+num[i];
+      }
+     for(int n : num){
+              System.out.println(n);
+       }
+      System.out.println("The sum is "+sum);
+    }
+  }
+
+------------------------------------------------------------------------------------
+Enter 10 numbers and add the even numbers only.
+
+  import java.util.Scanner;
+  public class ArrayDemo10 {
+    public static void main(String args[]){
+     int num[]=new int[10];
+     int evenSum=0;
+     Scanner scan=new Scanner(System.in);     
+     for(int i=0;i<num.length;i++) {
+         System.out.println("Enter the number");
+         num[i]=scan.nextInt();
+         if(num[i]%2==0){
+         evenSum+=num[i]; // sum=sum+num[i];
+         }
+      }
+     for(int n : num){
+              System.out.println(n);
+       }
+      System.out.println("The sum of even numbers "+evenSum);
+    }
+  }
+
+------------------------------------------------------------------------------------------------------
+Enter 10 numbers and add the even numbers and odd numbers in separate variable.
+
+  import java.util.Scanner;
+  public class ArrayDemo11 {
+    public static void main(String args[]){
+     int num[]=new int[10]; // int[] num=new int[10];
+     int evenSum=0;
+     int oddSum=0;
+     Scanner scan=new Scanner(System.in);     
+     for(int i=0;i<num.length;i++) {
+         System.out.println("Enter the number");
+         num[i]=scan.nextInt();
+         if(num[i]%2==0){
+         evenSum+=num[i]; // sum=sum+num[i];
+         }
+         else{
+          oddSum+=num[i]; 
+         }
+      }
+     for(int n : num){
+              System.out.println(n);
+       }
+      System.out.println("The sum of even numbers "+evenSum);
+      System.out.println("The sum of odd numbers "+oddSum);
+    }
+  }
+
+-----------------------------------------------
+Enter 10 number and add the numbers if the number is even and also the position in the array is also even.
+
+Enter the number
+1 -------------------->0
+Enter the number
+2--------------------->1
+Enter the number
+6--------------------->2
+Enter the number
+1-------------------->3
+Enter the number
+4-------------------->4
+Enter the number
+3-------------------->5
+Enter the number
+8---------------------6
+Enter the number
+10--------------------7
+Enter the number
+11--------------------8
+Enter the number
+22-------------------9
+
+The sum is 
+[6+4+8=18]
+--------------------------------------------------------
+
+Student is having marks of 3 subjects
+
+  public class Student {
+    private int roll;
+    private String name;
+    private int marks[];
+
+    setters/getters method
+   }
+
+ import java.util.Scanner;
+  public class StudentMain {
+   public static void main(String args[]) {
+   Scanner scan=new Scanner(System.in);
+   Student student=new Student();
+   int marks[]=new int[3];
+   System.out.println("Enter the student roll number");
+   int roll=scan.nextInt();
+   student.setRoll(roll);
+   System.out.println("Enter the name for the student");
+   String name=scan.next();
+   student.setName(name);
+   System.out.println("Enter the marks");
+   for(int i=0;i<marks.length;i++){
+   marks[i]=scan.nextInt();
+   }
+   student.setMarks(marks);
+   System.out.println("The details for the student");
+   System.out.println("The roll "+student.getRoll());
+   System.out.println("The name "+student.getName());
+  // System.out.println("The marks "+student.getMarks());  // The marks [I@7e0ea639
+    // The above line is a String object representation of an array
+   System.out.println("The marks :");
+   marks=student.getMarks();
+   for(int m : marks)
+   {
+	   System.out.println(m);
+   }
+
+   }
+}
+      
+-------------------------------------------------------------------------------------------------------------------------------
+// num.length===> It returns the number of rows So in the below example 
+// as the number of rows are 3 so length returned will be 3
+// num[0].length===>It will return the number of elements in 0 th row
+// num[1]/length===>It will return the number of elements in 1st row
+int num[][]=new int[3][4];
+// 3 is number of rows
+// 4 is number of cols
+import java.util.Scanner;
+
+public class ArrayDemo12 {
+  public static void main(String args[]){
+	  int num[][]=new int[3][4];
+Scanner scan=new Scanner(System.in);
+for(int row=0;row<num.length;row++){
+  for(int col=0;col<num[row].length;col++){
+   System.out.println("Enter the number");
+   num [row][col]=scan.nextInt();
+     }
+  } 
+
+for(int row=0;row<num.length;row++){
+  for(int col=0;col<num[row].length;col++){
+    System.out.print(num[row][col]+" ");
+     }
+ System.out.println();  
+}
+
+}
+}
+----------------------------------------------------------------------------------------------------------------------------
