@@ -1,9 +1,75 @@
+
+class Calculator {
+  int num1;
+  int num2;
+  
+   void setData(int n1,int n2){
+    num1=n1;
+    num2=n2;
+   }
+
+   void display(){
+   System.out.println(num1);
+   System.out.println(num2);
+   }
+
+   int add(){
+     int result=num1+num2;
+     return result
+    }
+
+    public static void main(String args[]){
+     int ch=0;
+     int num1;
+     int num2;
+     Calculator calc=new Calculator();
+     Scanner scan=new Scanner(System.in);
+     start of the loop {    
+      System.out.println("STORE THE VALUE OF NUM1 and NUM2");
+     
+      ch=scan.nextInt();
+      switch(ch) : 
+                    
+       case 1 :  num1=scan.nextInt();
+
+   }
+  }     
+---------------------------------------------------------------------------------------
+class Customer {
+	public String customerId;
+	public String customerName;
+	public long contactNumber;
+	public String address;
+}
+public class Tester {
+	public static void main(String args[]) {
+		Customer customer1 = new Customer();
+		System.out.println(customer1.customerId);
+		System.out.println(customer1.customerName);
+		System.out.println(customer1.contactNumber);
+                System.out.println(customer1.address);
+	}
+}
+      
+Observation:-
+1) We are writing two separate classes.
+2) main method is kept in a separate class called Tester( we can have any class).
+3) We have not initialised the instance variable of Customer class.
+4) While displaying the customerId, customerName, address we are able to see null and for contactNumber we see a value of 0.
+   These are the default value. For any reference type the default value is null.
+5) Here we have not provided any constructor so during the compilation default constructor is provided to the Customer class
+   because of that during the execution of the above code we are able to see the default values as null and 0.
+
+
+
+------------------------------------------------------------------------------------------------------------
+
 Constructors
 * Constructors are used to initialise member variables and so ultimately initialising objects.
 * Constructors are having the same name as that of the class name.
 * Constructors are methods.
 * With constructor we dont write any return type.
-* We can have two types of cosntructor - 1)default/parameterless 2) parameterized constructor
+* We can have two types of cosntructors - 1)default/parameterless 2) parameterized constructor
 
 public class Numbers1{
    private int num1;
@@ -29,11 +95,27 @@ public class NumbersMain1 {
     }
  } 
   
+ 1 Numbers1 number1=new Numbers1();
+ 2 Numbers1 number2=new Numbers1();
+
+ The above two lines can be explained as we created two reference variables number1 and number2
+ of Numbers1 type ( non primitive/reference type). Here two objects are created and their respective
+ address are stored in numbers1 and numbers.  
+
+3 Numbers1 number1=new Numbers1();
+4 Numbers1 number2=number1;
+
+So we have two reference variables but one object. The object is created in line 3 and address of that
+object is stored in number1 after that in line4 , we are copying that address in number2. 
+
+
+
+  
 Q How the member variables are getting the default value as 0?
 A because of the constructor. Though currently in our code , we have not defined any constructor but
   during the compilation time , the code is provided with the default constructor.
 
-----------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------
 Q Can we define our own default or parameterless constructor?
 A Yes
 
@@ -45,6 +127,12 @@ public class Numbers2{
     num1=1;
     num2=2;
    }
+
+  /*  Numbers2(){
+    num1=3;
+    num2=4;
+   }
+Duplicate method Numbers2() in type Numbers2 */
 
    void setData(int n1, int n2){
     num1=n1;
@@ -60,6 +148,7 @@ public class Numbers2{
 public class NumbersMain2 {
    public static void main(String args[]){
       Numbers2 number=new Numbers2();  // Number2() is a parmeterless/default constructor
+      Numbers2 number2=new Numbers2(); 
       number.dispData();  // 1 2
       number.setData(3,4);
       number.dispData();  // 3 4
@@ -67,6 +156,20 @@ public class NumbersMain2 {
  } 
   
 ------------------------------------------------------------------------------------------------
+Q Can we set the value with the constructors only and not writing setData kind of function?
+A yes we can do but that wont be the correct approach of writing the code. The reason
+is constructor is invoked once only during the object creation. We cannot call the
+constructor repeatedly. If we are doing so every time we are creating a new object.
+But during the usage of the object we may change the data of an object and
+the only solution left is setData kind of methods.
+
+1  Customer c=new Customer(1,"Tom");
+2  c=new Customer(1,"Tommy");
+/* In the above lines one object is created in line1 and reference is stored
+in c. In line 2 in the reference c we are overwriting the address of the
+object created in line1 with the object created in line2 */
+
+
 
  Q What about parameterized constructor?
  A 
