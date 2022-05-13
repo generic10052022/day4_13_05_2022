@@ -642,7 +642,7 @@ restricted access and which needs to be exposed outside the class. So the member
 specifier/modifier and the members which are to be exposed we declare them as public. The below is not a complete example of encapsulation.
 
 
-class Customer {
+class Customer1 {
 	public String customerId;
 	public String customerName;
 	public long contactNumber;
@@ -657,9 +657,9 @@ class Customer {
 		System.out.println();
 	}
 }
-public class Tester {
+public class Tester1 {
 	public static void main(String args[]) {
-		Customer customer = new Customer();
+		Customer1 customer = new Customer1();
 		customer.customerId = "C101";
 		customer.customerName = "Stephen Abram";
 		customer.contactNumber = 7856341287L;
@@ -670,7 +670,7 @@ public class Tester {
 
 ---------------------------------------------------------------------------------------
 
-class Customer {
+class Customer2 {
 	private String customerId;
 	private String customerName;
 	private long contactNumber;
@@ -692,10 +692,10 @@ class Customer {
 		System.out.println();
 	}
 }
-public class Tester {
+public class Tester2 {
 	public static void main(String args[]) {
-		Customer customer1 = new Customer();
-	        Customer customer2 = new Customer();
+		Customer2 customer1 = new Customer2();
+	        Customer2 customer2 = new Customer2();
    	        customer1.setData();
                 customer2.setData();
 		customer1.displayCustomerDetails();
@@ -706,7 +706,7 @@ public class Tester {
 The above code gives same data for multiple objects. We can implement Scanner and take user inout.
 
 import java.util.Scanner;
-class Customer {
+class Customer3 {
 	private String customerId;
 	private String customerName;
 	private long contactNumber;
@@ -728,10 +728,10 @@ class Customer {
 		System.out.println();
 	}
 }
-public class Tester {
+public class Tester3 {
 	public static void main(String args[]) {
-		Customer customer1 = new Customer();
-	        Customer customer2 = new Customer();
+		Customer3 customer1 = new Customer3();
+	        Customer3 customer2 = new Customer3();
    	        customer1.setData();
                 customer2.setData();
 		customer1.displayCustomerDetails();
@@ -743,7 +743,7 @@ public class Tester {
 ---------------------------------------------------------------------------------------------------------------------
 
 
-class Customer {
+class Customer4 {
 	private String customerId;
 	private String customerName;
 	private long contactNumber;
@@ -766,10 +766,10 @@ class Customer {
 		System.out.println();
 	}
 }
-public class Tester {
+public class Tester4 {
 	public static void main(String args[]) {
-		Customer customer1 = new Customer();
-	        Customer customer2 = new Customer();
+		Customer4 customer1 = new Customer4();
+	        Customer4 customer2 = new Customer4();
    	        customer1.setData("C101","Lalit",1234567890,"Delhi");
                 customer2.setData("C102","Akash",9830234232,"Chennai");
 		customer1.displayCustomerDetails();
@@ -841,7 +841,7 @@ boolean isGradulate(){}
 
 [Note: for boolean data read we dont have get method , it starts with is followed by the attribute name ]
 
-class Customer {
+class Customer5 {
    private int id;
    private String name;
    
@@ -863,10 +863,10 @@ class Customer {
 }
 
 
-public class CustomerMain{
+public class CustomerMain5{
     public static void main(String args[]){
-    Customer customer1=new Customer();
-    Customer customer2=new Customer();
+    Customer5 customer1=new Customer5();
+    Customer5 customer2=new Customer5();
     customer1.setId(1);
     customer1.setName("Ranjith");
     customer2.setId(2);
@@ -877,6 +877,32 @@ public class CustomerMain{
    // System.out.println(customer2.getName());
    }
 }   
+
+------------------------------------------------------------------------------------------------------------------------
+We have to create a class called Student. Student will have roll,name and 3 subjects . The names of the subjects
+are English,Maths,Sc and the subject name is same for all the student. 
+Complete with your knowledge of encapsulation.
+Create two student objects with the data.
+
+public class StudentEncap{
+private int roll;
+private String name;
+private String subject1;
+private String subject2;
+private String subject3;
+
+// constructors
+// setters/getters method
+
+} 
+
+
+public class StudentEncapMain{
+public static void main(String args[]){
+
+}
+
+}
   
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1016,6 +1042,87 @@ public class DataMain2 {
 }
 
 ------------------------------------------------------------------------------------------------------------------
+class Customer {
+  int id;
+  String custName;
+  String address;
+
+  void setData(int id, String custName, String address){
+   this.id=id;
+   this.custName=custName;
+   this.address=address;
+  }
+
+  void dispData() {
+
+ }
+
+class CustomerMain{
+   public static void main(String args[]){
+     Customer cust=new Customer();
+     cust.setData(1,"Ram","Delhi");
+     cust.id=10; 
+  }
+}
+
+// In the above example id,custName and address and setData and dispData all have default access.
+
+------------------------------------
+
+class Customer {
+  private int id;
+  private String custName;
+  private String address;
+
+  void setData(int id, String custName, String address){
+   this.id=id;
+   this.custName=custName;
+   this.address=address;
+  }
+
+  void dispData() {
+
+ }
+}
+
+
+class CustomerMain{
+   public static void main(String args[]){
+     Customer cust=new Customer();
+     cust.setData(1,"Ram","Delhi");
+     // cust.id=10; [ This line will show compilation error as we cannot access private member outside the class]
+  }
+}
+----------------------------------------------------------------------
+class Customer {
+  private int id;
+  private String custName;
+  private String address;
+
+  public void setData(int id, String custName, String address){
+   this.id=id;
+   this.custName=custName;
+   this.address=address;
+  }
+
+  public void dispData() {
+
+ }
+}
+
+
+class CustomerMain{
+   public static void main(String args[]){
+     Customer cust=new Customer();
+     cust.setData(1,"Ram","Delhi");
+     // cust.id=10; [ This line will show compilation error as we cannot access private member outside the class]
+  }
+}
+
+
+
+-------------------------------------------------------------
+
 char alpha='a';
 char alpha2='b';
 char alpha3='c';
@@ -1693,4 +1800,4 @@ for(int row=0;row<num.length;row++){
 
 }
 }
-----------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
