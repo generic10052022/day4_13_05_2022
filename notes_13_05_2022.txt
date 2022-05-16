@@ -1145,7 +1145,8 @@ So to work with group of characters we declare a reference variable of String ty
     }
  }
 
-// Welcome is a String literal. Literal means a constant. 
+// Welcome is a String literal. Literal means a constant. In case of String literal
+// they are objects.
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1171,8 +1172,7 @@ public class StringDemo2 {
 In line 3 We created a reference variable str1 and the reference variable will point to the String object Max. The literal Max will be checked for
 its existence and as it is for the first time,  the literal Max will be created and stored in the constant String pool and will be refered by str1.
 In line 4, We are writing str2=Max, In line4 again it will be checked whether the constant String pool is already having Max or not. In our example
-it is already present because of line 3. So in line 4 , the constant Max won't get created. The str2 will refer to the same String Max which was
-created in line3.  
+it is already present because of line 3. So in line 4 , the constant Max won't be  get created. The str2 will refer to the same String Max which was created in line3.  
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1225,6 +1225,24 @@ public class StringDemo4{
    }
  }
 
+
+public class StringDemo4b{
+    public static void main(String args[]) {     
+     String str1=new String("Max");
+     String str2=new String("Max1");
+     System.out.println(str1==str2); // false
+     // == It checks whether str1 and str2 are pointing to the
+     // same object or not. In this case str1 and str2 are pointing to two different objects and the
+    // new objects got created with the new keyword
+     System.out.println(str1.equals(str2)); // equals method is 
+     // used to compare the content of the objects
+     // which means is the content which is pointed by str1 is
+     // same as the content pointed by str2. If yes it returns true. In the current example both str1 and str2 are pointing to the
+     // objects which are having the different contents.
+   }
+ }
+
+
 ------------------------------------------------------------
 [Note: We have to check how we are creating the String objects. 
 * Is it through String literal
@@ -1245,7 +1263,7 @@ public class StringDemo4{
 use equals to check whether two Strings are equal or not.
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 
-int length(); // It returns the length of a String
+'//int length(); // It returns the length of a String
 public class StringDemo5 {
 
 	public static void main(String[] args) {
@@ -1258,11 +1276,26 @@ public class StringDemo5 {
 	}
 
 }
+
+--------------------------------------------------------------------
+Give the class name as StringExercise1 and put a main method within that. 
+Enter a string from user and check the length . If the length is below
+5 characters, ask the user to enter the string once again and keep on entering
+till the length is 5 or more characters.
+
+Enter the string 
+ram
+Length is incorrect
+Enter the string
+ravi
+Length is incorrect
+Enter the string
+rajesh
+Entered string is Rajesh
 -----------------------------------------------------------------------------------------------------------------
 String concat(String str2); // Adding one string to another String 
 
 public class StringDemo6{
-
 	public static void main(String[] args) {
 		String str="welcome";
                 String str2="friends";
@@ -1284,6 +1317,11 @@ public class StringDemo6{
 	}
 
 }
+                  str====================> welcome
+                  str2===================> friends
+                  str3===================>welcomefriends
+      
+
 -----------------------------------------------------------------------------------------------------
 public class StringDemo6b{
 
@@ -1306,7 +1344,37 @@ public class StringDemo6b{
 
 }
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
-boolean equals(String str);
+//boolean equals(String str);
+public class EqualsDemo {
+   public static void main(String args[]){
+    String str1="hello";
+    String str2="Hello";
+    if(str1.equals(str2)){
+      System.out.println("Both the strings are equal");
+    }
+    else{
+     System.out.println("The strings are not equal");
+    }
+ }
+}
+
+
+
+//boolean equalsIgnoreCase(string str);
+public class EqualsIgnoreCaseDemo {
+   public static void main(String args[]){
+    String str1="hello";
+    String str2="Hello";
+    if(str1.equalsIgnoreCase(str2)){
+      System.out.println("Both the strings are equal ignoring the case");
+    }
+    else{
+     System.out.println("The strings are not equal");
+    }
+ }
+}
+
+
 
 
 Revise
@@ -1357,6 +1425,8 @@ boolean equalsIgnoreCase(String str)
 
 Enter numbers from user and perform the addition of numbers till user enters any other thing than yes/Yes/YES/yeS/yEs.
 
+
+import java.util.Scanner;
 public class Revise2 {
     public static void main(String args[]){
     int num;
@@ -1379,22 +1449,29 @@ public class Revise2 {
 
 ------------------------------------------------------------
 
-String toLowerCase()
-String toUpperCase()
+/* String toLowerCase()
+String toUpperCase() */
 
 public class StringDemo7 {
    public static void main(String args[]) {
        String lower="hello";
        String upper="HELLO";
-       lower="heLLO";
-       System.out.println(lower.toUpperCase());
-       System.out.println(upper.toLowerCase());
+       //lower="heLLO";
+       System.out.println(lower.toUpperCase()); //HELLO
+       System.out.println(lower);  //hello
+       System.out.println(upper.toLowerCase());  //hello
+       System.out.println(upper);   //HELLO
      }
  }
-
+        lower ================>  hello
+        lower.toUpperCase()====> HELLO ( is totally a new string . The string refered by lower is not changed.
+        upper=================> HELLO
+        upper.toLoweCase()====> hello ( hello is a new String object. Not the same string object whose reference is with upper.
+So as String is immutable. Whenever we try to change the string object, It creates a new String object. The string object with which
+we apply the methods, remain unaltered. 
 ------------------------------------------------------------------------------------------------------------------
 
-char charAt(int pos);
+//char charAt(int pos);
 public class StringDemo8 {
     public static void main(String args[]) {
      String str="Welcome";
@@ -1455,7 +1532,7 @@ public class Exercise1{
 
 // substring(int startIndex)===> startIndex till the end of the string
 // substring(int startIndex, int endIndex) ====> starting from startIndex and ending at end Index -1
-public class StringDemo8 {
+public class StringDemo9 {
 
 	public static void main(String[] args) {
 		String str="Welcome";
@@ -1471,16 +1548,29 @@ public class StringDemo8 {
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
-public class StringDemo9 {
+public class StringDemo10 {
 
 	public static void main(String[] args) {
 	String str="Welcome";
 	String str2="co";
 	String str3="do";
-	boolean b=str.contains(str2);
-	System.out.println(b);
+	boolean b=str.contains(str2);  
+	System.out.println(b);  // true
 	b=str.contains(str3);
-	System.out.println(b);
+	System.out.println(b); //false
+
+	}
+
+}
+
+//String replace(char old, char new)
+public class StringDemo11 {
+
+	public static void main(String[] args) {
+	String str="Welcome";
+	String str2=str.replace('e','i');
+        System.out.println(str); //Welcome
+        System.out.println(str2); //Wilcomi
 
 	}
 
