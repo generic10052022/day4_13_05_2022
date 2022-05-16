@@ -1830,6 +1830,10 @@ Enter 10 numbers and add the even numbers and odd numbers in separate variable.
       System.out.println("The sum of odd numbers "+oddSum);
     }
   }
+----------------------------------------------------------------------------------
+An Employee is having id,name and cityName. We need to have 2 city names.
+One is of the home town/city and another is for the city where the employee
+is working.
 
 -----------------------------------------------
 Enter 10 numbers and add the numbers if the number is even and also the position in the array is also even.
@@ -1859,55 +1863,102 @@ The sum is
 [6+4+8=18]
 --------------------------------------------------------
 
-Student is having marks of 3 subjects
+Student is having marks of 3 subjects and we have to store the marks in 3 subjects namely Maths,English and Science. 
 
-  public class Student {
-    private int roll;
-    private String name;
-    private int marks[];
+public class Student {
+private int roll;
+private String name;
+//private String subjects[]={"Eng","Maths","Sc"};
+private String subjects[]=new String[3];
+private int marks[];
 
-    public void setMarks(int marks[]){
-     this.marks=marks;
-    }
 
-    public int[] getMarks(){
-     return marks;
-    }
- 
-    setters/getters method
-   }
+public Student() {
+  //subjects= {"Eng","Maths","Sc"} ;
+  subjects[0]="English";
+  subjects[1]="Maths";
+  subjects[2]="Science";
+}
+
+
+public int getRoll() {
+	return roll;
+}
+
+
+public void setRoll(int roll) {
+	this.roll = roll;
+}
+
+
+public String getName() {
+	return name;
+}
+
+
+public void setName(String name) {
+	this.name = name;
+}
+
+
+public int[] getMarks() {
+	return marks;
+}
+
+
+public void setMarks(int[] marks) {
+	this.marks = marks;
+}
+
+
+public String[] getSubjects() {
+	return subjects;
+}
+
+
+
+
+}
+
 
  import java.util.Scanner;
-  public class StudentMain {
-   public static void main(String args[]) {
-   Scanner scan=new Scanner(System.in);
-   Student student=new Student();
-   int marks[]=new int[3];
-   System.out.println("Enter the student roll number");
-   int roll=scan.nextInt();
-   student.setRoll(roll);
-   System.out.println("Enter the name for the student");
-   String name=scan.next();
-   student.setName(name);
-   System.out.println("Enter the marks");
-   for(int i=0;i<marks.length;i++){
-   marks[i]=scan.nextInt();
-   }
-   student.setMarks(marks);
-   System.out.println("The details for the student");
-   System.out.println("The roll "+student.getRoll());
-   System.out.println("The name "+student.getName());
-  // System.out.println("The marks "+student.getMarks());  // The marks [I@7e0ea639
-    // The above line is a String object representation of an array
-   System.out.println("The marks :");
-   marks=student.getMarks();
-   for(int m : marks)
-   {
-	   System.out.println(m);
-   }
 
-   }
+public class StudentMain {
+
+	public static void main(String[] args) {
+		Scanner scan=new Scanner(System.in);
+		Student student=new Student();
+		int marks[]=new int[3];
+		System.out.println("Enter the roll number");
+		int roll=scan.nextInt();
+		student.setRoll(roll);
+		System.out.println("Enter the name");
+		String name=scan.next();
+		student.setName(name);
+		System.out.println("Enter the marks");
+		String subjects[]=student.getSubjects();
+		for(int i=0;i<marks.length;i++)
+		{
+			System.out.println("Enter the marks for "+subjects[i]);
+			marks[i]=scan.nextInt();
+		}
+		student.setMarks(marks);
+		System.out.println("The details are");
+		System.out.println("NAME "+student.getName());
+		System.out.println("ROLL NUMBER "+student.getRoll());
+		marks=student.getMarks();
+		for(int i=0;i<marks.length;i++)
+		{
+			System.out.println(subjects[i]+" "+marks[i]);
+		}
+		
+
+	}
+
 }
+
+
+
       
 -------------------------------------------------------------------------------------------------------------------------------
 // num.length===> It returns the number of rows So in the below example 
