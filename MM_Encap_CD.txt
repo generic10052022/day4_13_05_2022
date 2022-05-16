@@ -1,0 +1,198 @@
+
+
+//memory management demo example
+
+class CustomerMM
+{
+	int custId; 		//instance variable
+	String custName;	//instance variable
+	String custCity;		//instance variable
+	 
+	
+	CustomerMM()
+	{
+		custId=100;
+		custName="No Name";
+		custCity="Mumbai";
+
+	}
+	
+	CustomerMM(int custId,String custName, String custCity )
+	{
+		this.custId=custId;
+		this.custName=custName;
+		this.custCity=custCity;
+	}
+	void dispCustInfo()
+	{
+		System.out.println("Customer id 	: "+custId);
+		System.out.println("Customer Name 	: "+custName);
+		System.out.println("Customer Location 	: "+custCity);
+		System.out.println("\n");
+	}
+	void dispMsg(int mtime) 	// paramer is considered as local variable
+	{
+		String msg=null; 		// local variable 
+		if(mtime<6 || mtime >20)msg="Good time";
+		else if(mtime<=12)msg=" Good Morning\n";
+		else if (mtime<=16)msg=" Good Afternoon\n";
+		else if (mtime<=20)msg=" Good Evening\n";
+		
+		System.out.println(msg+custName);
+	}
+	
+
+		
+}
+class Tester
+{
+	public static void main(String s[])
+	{
+		CustomerMM cust1=new CustomerMM(101,"Megha","Mumbai" );	// cust1 object ref. variable
+		CustomerMM cust2=new CustomerMM(102,"Raghav","Delhi"); 	// cust2 object ref. variable
+		CustomerMM cust3=new CustomerMM(103,"Priya","Pune"); 	// cust3 object ref. variable
+		CustomerMM cust4;					// cust4 object ref. variable
+
+		cust1.dispCustInfo();
+		cust2.dispCustInfo();
+		cust3.dispCustInfo();
+		cust1=null;		// garbage collection case 1
+		cust4=cust2;
+		cust2=null;
+
+		cust3=cust4;		// garbage collection case 2
+		
+
+	}
+}
+
+
+
+
+// encapsulation demo example
+
+class CustomerEncap 
+{
+	private int custId; // encapsulation or data hiding
+	private String custName; // encapsulation or data hiding
+	private String custCity; // encapsulation or data hiding
+
+	CustomerEncap(int custId,String custName,String custCity) //parameterised constructor
+	{
+		this.custId=custId;
+		this.custName=custName;
+		this.custCity=custCity;
+	}
+	void dispCustInfo() //display CustomerEncap information method  
+	{
+		System.out.println("CustomerEncap id : "+custId);
+		System.out.println("CustomerEncap name : "+custName);
+		System.out.println("CustomerEncap location : "+custCity);
+		
+	}
+	void setCustName(String custName)  // setter or mutator method
+	{
+		this.custName=custName;
+	}
+	void setCustCity(String custCity) // setter or mutator method
+	{
+		this.custCity = custCity;
+	}
+	int getCustId()	//getter or accessor method
+	{
+		return custId;
+	}
+	String getCustName() //getter or accessor method
+	{
+		return custName;
+	}
+	String getCustCity() //getter or accessor method
+	{
+		return custCity;
+	}	
+	
+}
+
+class Tester
+{
+	public static void main(String s[])
+	{
+		CustomerEncap cust1=new CustomerEncap(101,"Anagha","Mumbai"); 
+		cust1.dispCustInfo(); // calling display method
+		cust1.setCustName("Raghav"); //calling setter method
+		cust1.setCustCity("Delhi"); //calling setter method
+		System.out.println("CustomerEncap id "+cust1.getCustId()); // calling getter method
+		String loc=cust1.getCustCity(); // calling getter method
+		System.out.println("CustomerEncap location "+loc);
+		
+	}
+}
+
+
+		
+
+//UML class diagram demo example
+
+public class Customer
+{
+	private String customerId;
+	private String customerName;
+	private long contactNumber;
+	private String address;
+
+	public Customer()
+	{
+
+	}
+	public Customer(String CustomerId,String customerName,long contactNumber,String address)
+	{
+
+	}
+	public Customer(String customerName,long contactNumber,String address)
+	{
+
+	}
+	public String getCustomerId()
+	{
+	
+	}
+	public void setCustomerId(String customerId)
+	{
+
+	}
+	public String getCustomerName()
+	{
+	
+	}
+	public void setCustomerName(String customerName)
+	{
+
+	}
+	public String getContactNumber()
+	{
+	
+	}
+	public void setContactNumber(long contactNumber)
+	{
+
+	}
+	public String getAddress()
+	{
+	
+	}
+	public void setAddress(String Address)
+	{
+
+	}
+	public void displayCustomerDetails()
+	{
+
+	}
+	public double payBill(double totalPrice)
+	{
+
+	}
+
+}
+
+	
