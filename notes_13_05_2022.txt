@@ -1575,6 +1575,44 @@ public class StringDemo11 {
 	}
 
 }
+
+StringExercise2. Accept an employeecode from user and check whether it starts either with A or B or C.
+If it is not starting , display the error message ===> not starting with A or B or C.
+
+  public class StringExercise2{
+   public static void main(String args[]){
+
+     // write your code
+   }
+
+  } 
+StringExercise3. Check whether a string is available within another string.
+If yes , display the starting position of the String found.
+Testcase1
+Enter the String
+Welcome
+Enter the sub string
+com
+The position from which com starts is 3
+Testcase2
+Enter the String
+Welcome
+Enter the sub string
+hello
+The substring hello not found
+
+ public class StringExercise3{
+   public static void main(String args[]){
+
+     // write your code
+   }
+
+  } 
+[Note: contains,substring,charAt,indexOf===>
+
+String str="Welcome";
+int pos=str.indexOf("come");
+System.out.println(pos); //3
 --------------------------------------------------------------------------------------------------------------------
 Arrays : ---
 Suppose if I give you a task of storing 5 numbers and we dont have the knowledge of arrays.
@@ -1606,21 +1644,24 @@ So how you are going to solve the problem.
         System.out.println("num5 "+num5);
        }
  }
+
 Observations with the above code:-
 * Reduntant steps.
 
-Arrays are basically adjacent memory locations given a common name and each location or element of this array is accessed with
-index number or subscript position
+Arrays are basically adjacent memory locations given a common name and each location or element of this array is accessed with index number or subscript position
 
-    We should how to declare an array in Java
+    We should know how to declare an array in Java
 
    Suppose we want to declare an array of int data type.
 
-    int num[]=new int[5];
+    int num[]=new int[5];===> 5 is the size of the array. 
+     
+      |  |  |  |  |   |
+        0  1  2  3  4
     // The above line can be divided into two statements:
     int num[]; // This signifies that we are declaring an array , [] signifies that it is an array declaration
-    num=new int[5]; // We are dynamically allocation an array of size 5. Dynamic means during the runtime.
-
+    num=new int[5]; // We are dynamically allocating an array of size 5. Dynamic means during the runtime.
+// length in the below code will return the length of the Array or size of the array
   public class ArrayDemo1 {
     public static void main(String args[]){
      int num[]=new int[5];
@@ -1791,7 +1832,7 @@ Enter 10 numbers and add the even numbers and odd numbers in separate variable.
   }
 
 -----------------------------------------------
-Enter 10 number and add the numbers if the number is even and also the position in the array is also even.
+Enter 10 numbers and add the numbers if the number is even and also the position in the array is also even.
 
 Enter the number
 1 -------------------->0
@@ -1825,6 +1866,14 @@ Student is having marks of 3 subjects
     private String name;
     private int marks[];
 
+    public void setMarks(int marks[]){
+     this.marks=marks;
+    }
+
+    public int[] getMarks(){
+     return marks;
+    }
+ 
     setters/getters method
    }
 
