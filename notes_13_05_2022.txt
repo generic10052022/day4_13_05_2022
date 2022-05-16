@@ -1831,9 +1831,7 @@ Enter 10 numbers and add the even numbers and odd numbers in separate variable.
     }
   }
 ----------------------------------------------------------------------------------
-An Employee is having id,name and cityName. We need to have 2 city names.
-One is of the home town/city and another is for the city where the employee
-is working.
+
 
 -----------------------------------------------
 Enter 10 numbers and add the numbers if the number is even and also the position in the array is also even.
@@ -1956,7 +1954,52 @@ public class StudentMain {
 	}
 
 }
+---------------------------------------------------------------------------------------------
+An Employee is having id,name and cityName. We need to have 2 city names.
+One is of the home town/city and another is for the city where the employee
+is working.
 
+//Employee.java
+
+public class Employee{
+private int id;
+private String name;
+private String cityName[];
+// setters/getters
+
+}
+
+//EmployeeMain.java
+
+public class EmployeeMain{
+public static void main(String args[]){
+  Scanner scan=new Scanner(System.in);
+  Employee emp=new Employee();
+  String cityNames[]=new String[2];
+  System.out.println("Enter the id of the employee");
+  int id=scan.nextInt();
+  emp.setId(id);
+  System.out.println("Enter the name of the employee");
+  String name=scan.next();
+  emp.setName(name);
+  System.out.println("Enter the city names");
+  for(int i=0;i<cityNames.length;i++){
+   System.out.println("Enter the city name");
+   cityNames[i]=scan.next();
+  
+  }
+  emp.setCityNames(cityNames);
+  System.out.println("The details");
+  System.out.println(emp.getId());
+  System.out.println(emp.getName());
+  cityNames=emp.getCityNames();
+  for(String city : cityNames){
+    System.out.println(city);
+   } 
+
+}
+
+}
 
 
       
@@ -1991,3 +2034,19 @@ for(int row=0;row<num.length;row++){
 }
 }
 --------------------------------------------------------------------------------------------------------------------------------
+Command Line arguments
+
+public class CommandLineDemo1 {
+
+	public static void main(String[] args) {
+		 System.out.println(args.length);
+		 System.out.println(args[0]);
+		 System.out.println(args[1]);
+		 for(String str : args)
+		 {
+			 System.out.println(str);
+		 }
+  
+	}
+
+}
