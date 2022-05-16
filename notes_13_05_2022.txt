@@ -2050,3 +2050,23 @@ public class CommandLineDemo1 {
 	}
 
 }
+---------------------------------------------------------------------------------------------------------
+Design two classes. Numbers and NumbersMain. Numbers will have an array of 10 numbers. 
+write the required setters/getters.
+design a method called addNumbers which will add all the numbers from the array and return to main.
+design a method called minNumber which will return the minimum number from the array.
+design a method called maxNumber which will return the maximum number from the array.
+public class Numbers{
+private int nums[];
+}
+
+public class NumbersMain{ 
+public static void main(String args[]){
+ Scanner scan=new Scanner(System.in);
+ int nums[]=new int[10];
+ Numbers numbers=new Numbers();
+ // accept the 10 numbers from user and pass it to the Numbers class object through setter method
+}
+
+}
+-----------------------------------------------------------------------------------------------------------
